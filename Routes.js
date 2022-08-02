@@ -14,7 +14,11 @@ const Routes = (dbFunctions) => {
 
   const filter = async (req, res) => {
     const code = req.body.regcode
-    res.redirect(`/filter/${code}`)
+    if(code){
+      res.redirect(`/filter/${code}`)
+    } else {
+      res.redirect("/")
+    }
   }
 
   const filtered = async (req, res) => {
