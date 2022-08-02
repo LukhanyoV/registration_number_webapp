@@ -1,0 +1,33 @@
+<h1>Registration Number WebApp</h1>
+
+<form class="" action="/reg_numbers" method="post">
+  <label for="reg_number">
+    Reg Number: <input type="text" name="reg_number" id="reg_number">
+  </label>
+  <button type="submit" name="button">ADD</button>
+</form>
+
+<form class="filter_form" action="/filter" method="post">
+  <label for="capetown">
+    <input type="radio" name="regcode" id="capetown" value="CA">Cape Town
+  </label>
+  <label for="bellville">
+    <input type="radio" name="regcode" id="bellville" value="CY">Bellville
+  </label>
+  <label for="paarl">
+    <input type="radio" name="regcode" id="paarl" value="CJ">Paarl
+  </label>
+  <label for="malmesburry">
+    <input type="radio" name="regcode" id="malmesburry" value="CK">Malmesburry
+  </label>
+  <label for="stellenbosch">
+    <input type="radio" name="regcode" id="stellenbosch" value="CL">Stellenbosch
+  </label>
+  <button type="submit" name="button">SHOW</button>
+</form>
+
+<div class="show_reg">
+  {{#each regNumbers}}
+    <div class="regNumber">{{reg_number}}</div>
+  {{/each}}
+</div>
