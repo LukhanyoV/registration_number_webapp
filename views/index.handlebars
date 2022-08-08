@@ -1,6 +1,11 @@
 <h1>Registration Number WebApp</h1>
 
 <form class="add_form" action="/reg_numbers" method="post">
+  <div class="messages">
+    <div class="success">{{messages.success}}</div>
+    <div class="info">{{messages.info}}</div>
+    <div class="error">{{messages.error}}</div>
+  </div>
   <label for="reg_number">
     <h2>Reg Number: </h2><input type="text" name="reg_number" id="reg_number">
   </label>
@@ -32,4 +37,7 @@
   {{#each regNumbers}}
     <div class="regNumber">{{reg_number}}</div>
   {{/each}}
+  {{#unless regNumbers}}
+    <h2>No registration numbers available</h2>
+  {{/unless}}
 </div>
