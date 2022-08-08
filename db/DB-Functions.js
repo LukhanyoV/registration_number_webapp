@@ -17,11 +17,15 @@ const DBFunctions = (db) => {
         let results = await db.any("SELECT reg_number, town_id FROM reg_numbers WHERE town_id = $1", [town_id.id])
         return results
     }
+    const deleteRegNumbers = async () => {
+        await db.none('DELETE FROM reg_numbers;')
+    }
     return {
         add,
         getAll,
         getAllTowns,
-        filterByCode
+        filterByCode,
+        deleteRegNumbers
     }
 }
 
