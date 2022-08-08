@@ -1,14 +1,31 @@
 const Routes = (dbFunctions) => {
   const index = async (req, res) => {
     const regNumbers = await dbFunctions.getAll()
-    console.log(regNumbers)
     res.render("index", {
       regNumbers
     })
   }
 
   const add = async (req, res) => {
-    await dbFunctions.add(req.body.reg_number)
+    const reg = req.body.reg_number
+    const code = reg.slice(0,2)
+    const regex = /[A-Z]{2,3}\s[0-9]{3}(\-|\s)?[0-9]{3}/
+    const validTowns = await dbFunctions.getAllTowns()
+    if(regex.test(reg) && validTowns.includes(code)){
+      await dbFunctions.add(reg)
+      req.flash("success", "Registration number added")
+    } else {
+      if(reg.trim() === ""){
+        req.flash("info", "Please enter registration number")
+      }
+      if(regex.test(reg) === false){
+        req.flash("error", "Invalid registration number entered")
+      } else if(validTowns.includes(code) === false){
+        req.flash("error", "Registration code not valid")
+      } else {
+        req.flash("error", "An error has occured")
+      }
+    }
     res.redirect("/")
   }
 
