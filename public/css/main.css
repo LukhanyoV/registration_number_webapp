@@ -9,47 +9,72 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgb(72, 144, 217);
+    height: 100vh;
 }
 
 /* add registration number form */
+.row {
+    display: flex;
+}
+
 .add_form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 500px;
 }
 
 .add_form label input {
-    margin: 1em;
+    margin: 1em 0;
     height: 20px;
     width: 280px;
 }
 
-.add_form button {
-    padding: 10px;
-    width: 300px;
+.submit {
+    padding: 0.2em;
+    width: 8em;
+    margin: 0 5px;
+}
+
+h4 {
+    margin: 0;
 }
 
 /* display the registration form */
-.show_reg {
+.display {
     display: flex;
-    justify-content: space-around;
+    background-color: white;
+    border: 1px solid black;
+    width: 100%;
+    min-height: 6em;
     flex-wrap: wrap;
-    width: 500px;
+    max-height: 100px;
+    overflow-y: scroll;
 }
 
-.show_reg .regNumber {
+.list-item {
+    padding: 0.2em;
+    background-color: gold;
     border: 1px solid black;
-    background-color: yellow;
-    border-radius: 5%;
-    padding: 20px;
-    margin: 2px;
+    border-radius: 0.2em;
+    color: black;
+    height: 1em;
+    margin: 0.5em;
+}
+
+.not-avilable {
+    margin: auto auto;
+}
+
+.options {
+    display: flex;
 }
 
 .filter_form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
 }
 
@@ -59,11 +84,12 @@ body {
 
 .filter_form button {
     height: 30px;
+    width: 280px;
 }
 
 /* flash messages */
 .messages {
-    height: 1em;
+    height: 0.5em;
 }
 
 .success {
@@ -76,4 +102,28 @@ body {
 
 .error {
     color: rgb(255, 63, 42);
+}
+
+/* container */
+.container {
+    background-color: white;
+    padding: 1em;
+    border: 1px solid black;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+fieldset, .container {
+    border-radius: 10px;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+    width: 600px;
 }

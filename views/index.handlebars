@@ -1,49 +1,62 @@
-<h1>Registration Number WebApp</h1>
-
-<form class="add_form" action="/reg_numbers" method="post">
+<div class="container">
+  <u><h3>Registration Number WebApp</h3></u>
   <p>Add new registration number using the form below</p>
-  <div class="messages">
-    <div class="success">{{messages.success}}</div>
-    <div class="info">{{messages.info}}</div>
-    <div class="error">{{messages.error}}</div>
+  <fieldset>
+    <legend>
+      <h4>Registration Number</h4>
+    </legend>
+    <div class="messages">
+      <div class="success">{{messages.success}}</div>
+      <div class="info">{{messages.info}}</div>
+      <div class="error">{{messages.error}}</div>
+    </div>
+
+      <form class="add_form" action="/reg_numbers" method="post">
+        <label for="reg_number">
+          <input type="text" name="reg_number" id="reg_number">
+        </label>
+        <div class="row">
+            <button type="submit" class="submit" name="button">ADD</button>
+          </form>
+          <form action="/delete" method="post">
+            <button type="submit" class="submit">DELETE ALL</button>
+      </div>
+      </form>
+  </fieldset>
+
+  <fieldset>
+    <legend>
+      <h4>Filter Registrations</h4>
+    </legend>
+    <form class="filter_form" action="/filter" method="post">
+      <div class="options">
+        <label for="capetown">
+          <input type="radio" name="regcode" id="capetown" value="CA">Cape Town
+        </label>
+        <label for="bellville">
+          <input type="radio" name="regcode" id="bellville" value="CY">Bellville
+        </label>
+        <label for="paarl">
+          <input type="radio" name="regcode" id="paarl" value="CJ">Paarl
+        </label>
+        <label for="malmesburry">
+          <input type="radio" name="regcode" id="malmesburry" value="CK">Malmesburry
+        </label>
+        <label for="stellenbosch">
+          <input type="radio" name="regcode" id="stellenbosch" value="CL">Stellenbosch
+        </label>
+      </div>
+      <button type="submit" name="button">SHOW</button>
+    </form>
+    
+    <div class="display">
+      {{#each regNumbers}}
+          <span class="list-item">{{reg_number}}</span>
+      {{/each}}
+      {{#unless regNumbers}}
+          <h3 class="not-avilable">No registrations available</h3>
+      {{/unless}}
   </div>
-  <label for="reg_number">
-    <h2>Reg Number: </h2><input type="text" name="reg_number" id="reg_number">
-  </label>
-  <button type="submit" name="button">ADD</button>
-</form>
+  </fieldset>
 
-<form action="/delete" method="post">
-  <p>Click on the button below to delete all registration numbers</p>
-  <button type="submit">DELETE ALL</button>
-</form>
-
-<form class="filter_form" action="/filter" method="post">
-  <div class="options">
-    <label for="capetown">
-      <input type="radio" name="regcode" id="capetown" value="CA">Cape Town
-    </label>
-    <label for="bellville">
-      <input type="radio" name="regcode" id="bellville" value="CY">Bellville
-    </label>
-    <label for="paarl">
-      <input type="radio" name="regcode" id="paarl" value="CJ">Paarl
-    </label>
-    <label for="malmesburry">
-      <input type="radio" name="regcode" id="malmesburry" value="CK">Malmesburry
-    </label>
-    <label for="stellenbosch">
-      <input type="radio" name="regcode" id="stellenbosch" value="CL">Stellenbosch
-    </label>
-  </div>
-  <button type="submit" name="button">SHOW</button>
-</form>
-
-<div class="show_reg">
-  {{#each regNumbers}}
-    <div class="regNumber">{{reg_number}}</div>
-  {{/each}}
-  {{#unless regNumbers}}
-    <h2>No registration numbers available</h2>
-  {{/unless}}
 </div>
