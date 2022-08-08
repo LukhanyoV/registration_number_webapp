@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: lightslategray;
+    background-color: rgb(72, 144, 217);
 }
 
 /* add registration number form */
@@ -37,7 +37,6 @@ body {
     justify-content: space-around;
     flex-wrap: wrap;
     width: 500px;
-    text-align: left;
 }
 
 .show_reg .regNumber {
@@ -60,4 +59,21 @@ body {
 
 .filter_form button {
     height: 30px;
+}
+
+/* flash messages */
+.messages {
+    height: 1em;
+}
+
+.success {
+    color: rgb(68, 206, 68);
+}
+
+.info {
+    color: aqua;
+}
+
+.error {
+    color: rgb(255, 63, 42);
 }
