@@ -45,11 +45,18 @@ const Routes = (dbFunctions) => {
     })
   }
 
+  const deleteRegNumbers = async (req, res) => {
+    await dbFunctions.deleteRegNumbers()
+    req.flash("error", "Registration numbers deleted")
+    res.redirect("/")
+  }
+
   return {
     index,
     add,
     filter,
-    filtered
+    filtered,
+    deleteRegNumbers
   }
 }
 

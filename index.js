@@ -33,6 +33,7 @@ app.get("/", routes.index)
 app.get("/filter/:code", routes.filtered)
 app.post("/reg_numbers", routes.add)
 app.post("/filter", routes.filter)
+app.post("/delete", routes.deleteRegNumbers)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
