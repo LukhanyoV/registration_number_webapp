@@ -8,6 +8,10 @@ const DBFunctions = (db) => {
         const results = await db.any("SELECT * FROM reg_numbers;")
         return results
     }
+    const getAllTowns = async () => {
+        const towns = await db.many("SELECT town_code FROM towns;")
+        return towns.map(row => row.town_code)
+    }
     const filterByCode = async (code) => {
         let town_id = await db.one("SELECT id FROM towns WHERE town_code = $1", [code])
         let results = await db.any("SELECT * FROM reg_numbers WHERE town_id = $1", [town_id.id])
@@ -16,6 +20,7 @@ const DBFunctions = (db) => {
     return {
         add,
         getAll,
+        getAllTowns,
         filterByCode
     }
 }
