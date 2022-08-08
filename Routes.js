@@ -7,7 +7,7 @@ const Routes = (dbFunctions) => {
   }
 
   const add = async (req, res) => {
-    const reg = req.body.reg_number
+    const reg = req.body.reg_number.toUpperCase()
     const code = reg.slice(0,2)
     const regex = /[A-Z]{2,3}\s[0-9]{3}(\-|\s)?[0-9]{3}/
     const validTowns = await dbFunctions.getAllTowns()
