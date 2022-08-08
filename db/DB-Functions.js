@@ -10,7 +10,6 @@ const DBFunctions = (db) => {
     }
     const checkExist = async (reg) => {
         const results = await db.oneOrNone("SELECT reg_number FROM reg_numbers WHERE reg_number = $1", [reg])
-        console.log(results)
         return results !== null
     }
     const getAllTowns = async () => {
