@@ -17,8 +17,7 @@ const Routes = (dbFunctions) => {
     } else {
       if(reg.trim() === ""){
         req.flash("info", "Please enter registration number")
-      }
-      if(regex.test(reg) === false){
+      } else if(regex.test(reg) === false){
         req.flash("error", "Invalid registration number entered")
       } else if(validTowns.includes(code) === false){
         req.flash("error", "Registration code not valid")
