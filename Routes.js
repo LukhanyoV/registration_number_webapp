@@ -7,11 +7,14 @@ const Routes = (dbFunctions) => {
   }
 
   const add = async (req, res) => {
-    const reg = req.body.reg_number.toUpperCase()
+    const reg = req.body.reg_number.toUpperCase().trim()
     const code = reg.slice(0,2)
     const regex = /[A-Z]{2,3}\s[0-9]{3}(\-|\s)?[0-9]{3}/
     const validTowns = await dbFunctions.getAllTowns()
-    if(regex.test(reg) && validTowns.includes(code)){
+    const exist = await dbFunctions.checkExist(reg)
+    if(exist){
+      req.flash("error", "Registration number already exists")
+    } else if(regex.test(reg) && validTowns.includes(code)){
       await dbFunctions.add(reg)
       req.flash("success", "Registration number added")
     } else {

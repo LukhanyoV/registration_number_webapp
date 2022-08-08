@@ -8,6 +8,11 @@ const DBFunctions = (db) => {
         const results = await db.any("SELECT reg_number, town_id FROM reg_numbers;")
         return results
     }
+    const checkExist = async (reg) => {
+        const results = await db.oneOrNone("SELECT reg_number FROM reg_numbers WHERE reg_number = $1", [reg])
+        console.log(results)
+        return results !== null
+    }
     const getAllTowns = async () => {
         const towns = await db.many("SELECT town_code FROM towns;")
         return towns.map(row => row.town_code)
@@ -23,6 +28,7 @@ const DBFunctions = (db) => {
     return {
         add,
         getAll,
+        checkExist,
         getAllTowns,
         filterByCode,
         deleteRegNumbers
