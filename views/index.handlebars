@@ -1,6 +1,7 @@
 <h1>Registration Number WebApp</h1>
 
 <form class="add_form" action="/reg_numbers" method="post">
+  <p>Add new registration number using the form below</p>
   <div class="messages">
     <div class="success">{{messages.success}}</div>
     <div class="info">{{messages.info}}</div>
@@ -10,6 +11,11 @@
     <h2>Reg Number: </h2><input type="text" name="reg_number" id="reg_number">
   </label>
   <button type="submit" name="button">ADD</button>
+</form>
+
+<form action="/delete" method="post">
+  <p>Click on the button below to delete all registration numbers</p>
+  <button type="submit">DELETE ALL</button>
 </form>
 
 <form class="filter_form" action="/filter" method="post">
