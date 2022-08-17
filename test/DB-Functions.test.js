@@ -3,7 +3,7 @@ import DBFunctions from "../db/DB-Functions.js"
 
 import pgPromise from "pg-promise"
 const pgp = pgPromise({})
-const db = pgp("postresql://postgres:nimda@localhost:5432/registrations_test")
+const db = pgp("postresql://test:test123@localhost:5432/registrations_test")
 
 describe("Test my database query functions", () => {
     // clean the table before testing
